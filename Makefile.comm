@@ -1,0 +1,23 @@
+VERSION   = 1.00
+CC        = gcc
+SOURCES   = $(wildcard ./src/*.c)
+INCLUDES  = -I./inc
+LIB_NAMES = -lDyALib -lStBlib
+LIB_PATH  = -L./libdy -L./libst
+OBJ       = $(patsubst %.c, %.o, $(SOURCES))
+# This is macro from external command input for the program source to determine whether print\output debug info.
+DEBUG     = -DUSE_DEBUG
+OUTPUT    = ./output
+
+
+# compile
+%.o: %.c
+ $(CC) $(INCLUDES) $(DEBUG) -c $(CFLAGS) $< -o $@
+
+
+clean:
+ @echo "Remove linked and compiled files......"
+ rm -rf $(OBJ) $(TARGET) output 
+
+
+.PHONY:clean

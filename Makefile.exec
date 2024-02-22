@@ -1,2 +1,12 @@
-TARGET=test
+include ./Makefile.comm
 
+
+CFLAGS    = -Wall
+TARGET    = test
+
+
+# links
+$(TARGET):$(OBJ)
+ @mkdir -p $(OUTPUT)
+ $(CC) $(OBJ) $(LIB_PATH) $(LIB_NAMES) -o $(OUTPUT)/$(TARGET)$(VERSION)
+ #@rm -rf $(OBJ)

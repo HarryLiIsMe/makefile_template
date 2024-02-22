@@ -1,2 +1,14 @@
-TARGET=libtest.a
+include ./Makefile.comm
 
+
+AR        = ar
+ARFLAGS   = rv
+CFLAGS    = -Wall
+TARGET    = libtest.a
+
+
+# pack
+$(TARGET):$(OBJ)
+ @mkdir -p $(OUTPUT)
+ $(AR) $(ARFLAGS) $(OUTPUT)/$(TARGET)$(VERSION).a $(OBJ)
+ #@rm -rf $(OBJ)

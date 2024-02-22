@@ -1,2 +1,2 @@
-# Here are some makefile templates.
+# Some Makefile Templates
 

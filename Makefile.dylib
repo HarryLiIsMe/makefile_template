@@ -1,2 +1,13 @@
-TARGET=libtest.so
+include ./Makefile.comm
 
+
+LFLAGS    = -fPIC -shared 
+CFLAGS    = -fPIC -shared -Wall
+TARGET    = libtest.so
+
+
+# link
+$(TARGET):$(OBJ)
+ @mkdir -p $(OUTPUT)
+ $(CC) $(OBJ) $(LIB_PATH) $(LIB_NAMES) $(LFLAGS) -o $(OUTPUT)/$(TARGET)$(VERSION).so
+ #@rm -rf $(OBJ)
