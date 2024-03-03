@@ -8,5 +8,5 @@ TARGET    = test
 # links
 $(TARGET):$(OBJ)
  @mkdir -p $(OUTPUT)
- $(CC) $(OBJ) $(LIB_PATH) $(LIB_NAMES) -o $(OUTPUT)/$(TARGET)$(VERSION)
+ $(CC) $(OBJ) $(LIB_PATH) $(LIB_NAMES) -o $(OUTPUT)/$(TARGET)_$(VERSION)
  #@$(RM) $(OBJ)
