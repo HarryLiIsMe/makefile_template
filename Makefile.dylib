@@ -3,11 +3,11 @@ include ./Makefile.comm
 
 LFLAGS    = -fPIC -shared 
 CFLAGS    = -fPIC -shared -Wall
-TARGET    = libtest.so
+TARGET    = libtest
 
 
 # link
 $(TARGET):$(OBJ)
  @mkdir -p $(OUTPUT)
- $(CC) $(OBJ) $(LIB_PATH) $(LIB_NAMES) $(LFLAGS) -o $(OUTPUT)/$(TARGET)$(VERSION).so
- #@rm -rf $(OBJ)
+ $(CC) $(OBJ) $(LIB_PATH) $(LIB_NAMES) $(LFLAGS) -o $(OUTPUT)/$(TARGET)_$(VERSION).so
+ #@$(RM) $(OBJ)
