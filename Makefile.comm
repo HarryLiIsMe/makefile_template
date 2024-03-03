@@ -17,7 +17,7 @@ OUTPUT    = ./output
 
 clean:
  @echo "Remove linked and compiled files......"
-$(RM) $(OBJ) $(OUTPUT)/$(TARGET) 
+$(RM) $(OBJ) $(OUTPUT)/* 
 
 
 .PHONY:clean
