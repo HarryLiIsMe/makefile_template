@@ -4,11 +4,11 @@ include ./Makefile.comm
 AR        = ar
 ARFLAGS   = rv
 CFLAGS    = -Wall
-TARGET    = libtest.a
+TARGET    = libtest
 
 
 # pack
 $(TARGET):$(OBJ)
  @mkdir -p $(OUTPUT)
- $(AR) $(ARFLAGS) $(OUTPUT)/$(TARGET)$(VERSION).a $(OBJ)
- #@rm -rf $(OBJ)
+ $(AR) $(ARFLAGS) $(OUTPUT)/$(TARGET)_$(VERSION).a $(OBJ)
+ #@$(RM) $(OBJ)
