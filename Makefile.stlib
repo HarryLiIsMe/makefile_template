@@ -1,14 +1,41 @@
-include ./Makefile.comm
+VERSION   = 1.00
+CC        = gcc
+SRC_DIRS  = src1 src2
+SRCS      = $(foreach DIR, $(SRC_DIRS), $(wildcard $(DIR)/*.c))
+INCS      = -I./inc1
+LIB_NAMES = -ldylib_name1 -lstlib_name1
+LIB_PATH  = -Ldylib_dir1 -Lstlib_dir1
+OBJPATH   = objs
+OBJS      = $(patsubst %.c, $(OBJPATH)/%.o, $(SRCS))
+# This is macro from external command input for the program source to determine whether print\output debug info.
+DEBUG     = -DUSE_DEBUG
+OUTPUT    = output
 
-
+LDFLAGS   =
+CFLAGS    = -Wall
+TARGET    := libmakefile_template
+TARGET 	  := $(OUTPUT)/$(TARGET)_$(VERSION).a
 AR        = ar
 ARFLAGS   = rv
-CFLAGS    = -Wall
-TARGET    = libmakefile_template 
 
+
+all: create_dir $(TARGET)
 
 # archive
-$(TARGET):$(OBJ)
- @mkdir -p $(OUTPUT)
- $(AR) $(ARFLAGS) $(OUTPUT)/$(TARGET)_$(VERSION).a $(OBJ)
- #@$(RM) $(OBJ)
+$(TARGET):$(OBJS)
+	$(AR) $(ARFLAGS) $@ $^
+
+# compile
+$(OBJS): $(OBJPATH)/%.o: %.c
+	$(CC) $(CFLAGS) $(INCS) $(DEBUG) -c $< -o $@
+
+
+.PHONY: clean create_dir all
+
+create_dir:
+	@ mkdir -p $(OUTPUT)
+	@ for v in $(SRC_DIRS); do mkdir -p $(OBJPATH)/$$v; done;
+
+clean:
+	@echo "Remove generated files......"
+	$(RM) $(OBJS) $(TARGET)
