@@ -7,7 +7,7 @@ CFLAGS    = -Wall
 TARGET    = libtest
 
 
-# pack
+# archive
 $(TARGET):$(OBJ)
  @mkdir -p $(OUTPUT)
  $(AR) $(ARFLAGS) $(OUTPUT)/$(TARGET)_$(VERSION).a $(OBJ)
