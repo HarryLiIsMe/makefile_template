@@ -3,7 +3,7 @@ include ./Makefile.comm
 
 LFLAGS    = -fPIC -shared 
 CFLAGS    = -fPIC -shared -Wall
-TARGET    = libtest
+TARGET    = libmakefile_template 
 
 
 # link
